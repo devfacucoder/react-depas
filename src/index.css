@@ -1,0 +1,20 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+button{
+  background: none;
+    border: none;
+}
+h1,h2,h3,h4,h5,label,b{
+  font-family: Arial, Helvetica, sans-serif;
+}
+body{
+  background-color: #ffffff;
+}
+a{
+  font-family: Arial, Helvetica, sans-serif;
+
+  color: inherit;
+}
