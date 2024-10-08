@@ -1,8 +1,8 @@
 /*Style Inicio*/
 .Inicio{
   width: 100%;
-  height: 100%;
-
+  min-height: 100%;
+  background-color: red;
 }
 .Inicio_item{
   width: 100%;

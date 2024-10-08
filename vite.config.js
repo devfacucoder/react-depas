@@ -5,5 +5,6 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
  
   plugins: [react()],
+  base:"https://devfacucoder.github.io/react-depas"
 })
 //192.168.1.35
