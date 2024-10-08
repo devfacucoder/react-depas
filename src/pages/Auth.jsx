@@ -16,7 +16,6 @@ function Auth() {
       email: inpEmail,
       password: inpPass,
     };
-    console.log(bodyRequest);
 
     fetch(apiUrl + "/api/auth/login", {
       method: "POST",
@@ -42,7 +41,6 @@ function Auth() {
       email: inpEmail,
       password: inpPass,
     };
-    console.log(bodyRequest);
 
     fetch(apiUrl + "/api/auth/register", {
       method: "POST",

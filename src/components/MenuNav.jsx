@@ -20,10 +20,12 @@ function MenuNav({ fun, stt }) {
         if (res.status == 200) {
           setPermitido(true);
           res.json();
+        }else if(res.status==403){
+          setPermitido(false);
+
         }
       })
       .then((data) => {
-        console.log(data);
       });
   }, [sessionStorage.getItem("tk")]);
   if (stt) {

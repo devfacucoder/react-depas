@@ -23,7 +23,6 @@ function Panel() {
     if (response.status === 200) {
       setPermitido(true);
       await response.json(); // Asegúrate de esperar la respuesta JSON
-      console.log("eliminado");
       setShowAlerModal(false)
       setDateUsers((prevUsers) =>
         prevUsers.filter((user) => user._id !== idForDeleteUser)

@@ -52,7 +52,6 @@ function Depa() {
     if (author) {
       setStateAuthor(author);
     } else if (stateDepa) {
-      console.log(stateDepa.author);
       fetch(apiUrl + "/api/users/" + stateDepa.author)
         .then((res) => res.json())
         .then((res) => setStateAuthor(res))

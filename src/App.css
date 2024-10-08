@@ -65,7 +65,22 @@ a{
 
 .MenuNav ul li{
     padding-left: 10px;
+    width: 100%;
 }
+.MenuNav ul li a{
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+    transition: background .2s;
+}
+
+.MenuNav ul li a:active{
+    background-color: #000000;
+    color: #fff;
+
+}
+
 .MenuNav_btn_logUt{
     position:absolute;
     bottom: 30px;

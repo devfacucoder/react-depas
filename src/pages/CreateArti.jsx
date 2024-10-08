@@ -64,7 +64,6 @@ function CreateArti({ mode = "crear", ideForEdit }) {
       body: formData, // Enviar el FormData en lugar de JSON.stringify
     });
     if (response.status == 200) {
-      console.log("perfecto")
     }
   }
 
@@ -90,7 +89,6 @@ function CreateArti({ mode = "crear", ideForEdit }) {
     for (let i = 0; i < filesImgs.length; i++) {
       formData.append("imgs", filesImgs[i]);
     }
-    console.log(mode)
     // Realizar la solicitud POST con el FormData
     if ((mode = "crear")) {
       const response = await fetch(apiUrl + "/api/depa", {
@@ -103,7 +101,6 @@ function CreateArti({ mode = "crear", ideForEdit }) {
       });
       if (response.status == 200) {
         const dataJs = await response.json();
-        console.log(dataJs);
 
         navi(`/depa/${dataJs._id}`, {
           state: { depaData: dataJs },
@@ -165,7 +162,6 @@ function CreateArti({ mode = "crear", ideForEdit }) {
         prevImages.filter((img) => !deletedImages.includes(img))
       );
 
-      console.log("All images deleted successfully.");
     } catch (error) {
       console.error("Error occurred while deleting images:", error);
     }
@@ -193,7 +189,6 @@ function CreateArti({ mode = "crear", ideForEdit }) {
       ? (bodyRequest.description = reDescription)
       : null;
 
-    console.log(dateForEdit._id);
     const response = await fetch(apiUrl + `/api/depa/${dateForEdit._id}`, {
       method: "PUT",
       body: JSON.stringify(bodyRequest),
@@ -219,7 +214,6 @@ function CreateArti({ mode = "crear", ideForEdit }) {
     await newsImages()
     if (response.status == 200) {
       const dataJs = await response.json();
-      console.log(dataJs);
 
       navi(`/depa/${dataJs._id}`, {
         state: { depaData: dataJs },
@@ -232,7 +226,6 @@ function CreateArti({ mode = "crear", ideForEdit }) {
       setReFeature(dateForEdit.features);
     } else if (mode == "crear") {
       setReFeature([]);
-      console.log(mode);
     }
   }, [mode]);
 
