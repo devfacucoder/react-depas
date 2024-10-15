@@ -1,10 +1,9 @@
 .CardDepa{
-    background-color: #F5F5F5;
     height: 100%;
     width: 100%;
+    border: solid 1px #000;
 }
 .box_CardDepa{
-    background-color: #ECDFCC;
     height: 100%;
     width: 100%;
     display: flex;
@@ -12,16 +11,20 @@
     
 }
 .box_img{
+    padding: 10px;
     width: 100%;
-    height: 60%;
-    overflow: hidden;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .box_img img{
     width: 100%;
+    height:100%;
     object-fit: scale-down;
 }
 .box_info{
-    height: 40%;
+    height: 30%;
     padding: 10px;
 }
 
@@ -102,4 +105,116 @@
     justify-content: center;
     align-items: center;
 }
+
+/*Loading*/
+
+.Loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: .6;
+}
+
+
+/*CardAdmPanel*/
+
+.CardAdmPanel{
+    min-height: 200px;
+    width: 100%;
+    padding: 10px;
+    background-color: #cccccc;
+}
+
+.CardAdmPanel_box_btnopt{
+    width: 100%;
+    height: 100px;
+    border: solid 1px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+}
+.CardAdmPanel_box_btnopt button{
+    min-width: 100px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    color: #fff;
+}
+.Panel_btn_delete{
+    background: #f00;
+}
+.Panel_btn_viewpubli{
+    background-color: rgb(7, 103, 7);
+}
+.Panel_btn_configRoles{
+    background-color: rgb(21, 21, 207);
+}
+.CardAdmPanel_box_depasusers ul{
+    display: flex;
+    flex-direction: column;
+}
+.CardAdmPanel_box_depasusers ul li{
+    list-style: none;
+}
+
+.Modal_change_rol{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #0000009c;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Modal_box{
+    width: 90%;
+    height: 200px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 15px;
+}
+.Modal_header{
+    width: 100%;
+    display: flex;
+}
+.Modal_box .Modal_header h3{
+    font-size: 30px;
+    width: 80%;
+    text-align: center;
+}
+.Modal_box .Modal_header button{
+    width: 20%;
+    font-size: 30px;
+}
+.Modal_box select{
+    width: 90%;
+    height: 30px;
+}
+.Modal_box h4{
+    font-size: 20px;
+}
+.Modal_box .Modal_box_btn_change{
+    width: 100px;
+    height: 30px;
+    background-color: #000;
+    color: #fff;
+}
+
 

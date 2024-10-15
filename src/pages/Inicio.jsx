@@ -48,12 +48,17 @@ function Inicio() {
           <button>Buscar</button>
         </form>
       </div>
+      <div className="box_btn_Inicio">
+        <button className="btn_Inicio_register">Registrarse</button>
+        <button className="btn_Inicio_login">Iniciar Sesion</button>
+
+      </div>
       <div className="Inicio_list">
         <ul>
           {stateDepa.length > 0 ? (
             stateDepa.map((e, index) => (
               <li key={index}>
-                <Link to={`/depa/${e._id}`}>
+                <Link to={`/react-depas/depa/${e._id}`}>
                   <CardDepa
                     imgUrl={e.imgs}
                     precio={e.price}

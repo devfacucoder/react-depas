@@ -1,5 +1,12 @@
 import "./components.css";
-function AlertModal({ nameDepa,funAgregadaALCancelar, show = false, funMain, id, ctrlModal }) {
+function AlertModal({
+  nameDepa,
+  funAgregadaALCancelar,
+  show = false,
+  funMain,
+  id,
+  ctrlModal,
+}) {
   if (show) {
     document.body.style.overflow = "hidden";
 
@@ -16,7 +23,7 @@ function AlertModal({ nameDepa,funAgregadaALCancelar, show = false, funMain, id,
               Cancelar
             </button>
             <button
-            className="btn_modal_cancel"
+              className="btn_modal_cancel"
               onClick={() => {
                 funMain(id);
               }}

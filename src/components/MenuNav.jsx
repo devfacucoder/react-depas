@@ -8,7 +8,7 @@ function MenuNav({ fun, stt }) {
   const [permitido, setPermitido] = useState(false);
   const cerrarSession = () => {
     sessionStorage.removeItem("tk");
-    navi("/auth/login");
+    navi("/react-depas/auth/login");
   };
   useEffect(() => {
     fetch(apiUrl + `/api/panel/permiso`, {
@@ -43,7 +43,7 @@ function MenuNav({ fun, stt }) {
         <ul>
           <li>
             <Link
-              to={"/"}
+              to={"/react-depas/"}
               onClick={() => {
                 fun(false);
               }}
@@ -53,7 +53,7 @@ function MenuNav({ fun, stt }) {
           </li>
           <li>
             <Link
-              to={"/perfil"}
+              to={"/react-depas/perfil"}
               onClick={() => {
                 fun(false);
               }}
@@ -63,7 +63,7 @@ function MenuNav({ fun, stt }) {
           </li>
           <li>
             <Link
-              to={"/creardepa"}
+              to={"/react-depas/creardepa"}
               onClick={() => {
                 fun(false);
               }}
@@ -77,7 +77,7 @@ function MenuNav({ fun, stt }) {
                 fun(false);
               }}
             >
-              <Link to={"/panel"}>Panel</Link>
+              <Link to={"/react-depas/panel"}>Panel</Link>
             </li>
           ) : null}
         </ul>

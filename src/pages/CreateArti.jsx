@@ -10,7 +10,7 @@ function CreateArti({ mode = "crear", ideForEdit }) {
 
   const refFiles = useRef(null);
   const refInptFeature = useRef(null);
-  const refFileAdd = useRef(null)
+  const refFileAdd = useRef(null);
   const [reTitle, setReTitle] = useState(
     mode == "edit" ? dateForEdit.title : ""
   );
@@ -24,7 +24,7 @@ function CreateArti({ mode = "crear", ideForEdit }) {
     mode == "edit" ? dateForEdit.currency : "ARS"
   );
   const [reLocation, setReLocation] = useState(
-    mode == "edit" ? dateForEdit.location : "Chimbas"
+    mode == "edit" ? dateForEdit.location : "seleccione"
   );
 
   const [inpFeature, setInpFeature] = useState("");
@@ -48,10 +48,10 @@ function CreateArti({ mode = "crear", ideForEdit }) {
   };
   const navi = useNavigate();
 
-  const newsImages = async (e)=>{
+  /*const newsImages = async (e) => {
     const formData = new FormData();
     const filesImgs = refFileAdd.current.files;
-    
+
     for (let i = 0; i < filesImgs.length; i++) {
       formData.append("imgs", filesImgs[i]);
     }
@@ -65,32 +65,31 @@ function CreateArti({ mode = "crear", ideForEdit }) {
     });
     if (response.status == 200) {
     }
-  }
-
+  };*/
 
   const createArticulo = async (e) => {
     e.preventDefault();
+    if (mode === "crear") {
+      // Obtener los archivos seleccionados
+      const filesImgs = refFiles.current.files;
+      // Crear un objeto FormData para enviar archivos y otros datos
+      const formData = new FormData();
+      formData.append("title", reTitle);
+      formData.append("price", rePrice);
+      formData.append("contactNumber", reContactNum);
+      formData.append("location", reLocation);
+      formData.append("description", reDescription);
+      formData.append("currency", reConcurrency);
+      // Envía el array de features como JSON.stringify
+      formData.append("features", JSON.stringify(reFeature)); // Convertir array a string JSON
 
-    // Obtener los archivos seleccionados
-    const filesImgs = refFiles.current.files;
-    // Crear un objeto FormData para enviar archivos y otros datos
-    const formData = new FormData();
-    formData.append("title", reTitle);
-    formData.append("price", rePrice);
-    formData.append("contactNumber", reContactNum);
-    formData.append("location", reLocation);
-    formData.append("description", reDescription);
-    formData.append("currency", reConcurrency);
-    // Envía el array de features como JSON.stringify
-    formData.append("features", JSON.stringify(reFeature)); // Convertir array a string JSON
+      //formData.append("features", reFeature);
+      // Agregar cada imagen al FormData
+      for (let i = 0; i < filesImgs.length; i++) {
+        formData.append("imgs", filesImgs[i]);
+      }
+      // Realizar la solicitud POST con el FormData
 
-    //formData.append("features", reFeature);
-    // Agregar cada imagen al FormData
-    for (let i = 0; i < filesImgs.length; i++) {
-      formData.append("imgs", filesImgs[i]);
-    }
-    // Realizar la solicitud POST con el FormData
-    if ((mode = "crear")) {
       const response = await fetch(apiUrl + "/api/depa", {
         method: "POST",
         headers: {
@@ -101,21 +100,11 @@ function CreateArti({ mode = "crear", ideForEdit }) {
       });
       if (response.status == 200) {
         const dataJs = await response.json();
-
-        navi(`/depa/${dataJs._id}`, {
+        console.log("caduhawhidawhidh");
+        navi(`/react-depas/depa/${dataJs._id}`, {
           state: { depaData: dataJs },
         });
       }
-    } else if ((mode = "edit")) {
-      //TODO EDITAR ESTO
-      const response = await fetch(apiUrl + `/api/depa/${ideForEdit}`, {
-        method: "put",
-        headers: {
-          Authorization: `Bearer ${sessionStorage.getItem("tk")}`,
-          // NOTA: No es necesario establecer `Content-Type` aquí cuando usas FormData
-        },
-        body: formData, // Enviar el FormData en lugar de JSON.stringify
-      });
     }
   };
   const deleteImages = (e, btn) => {
@@ -161,7 +150,6 @@ function CreateArti({ mode = "crear", ideForEdit }) {
       setImgForDelete((prevImages) =>
         prevImages.filter((img) => !deletedImages.includes(img))
       );
-
     } catch (error) {
       console.error("Error occurred while deleting images:", error);
     }
@@ -211,11 +199,10 @@ function CreateArti({ mode = "crear", ideForEdit }) {
       });
     }
     await borrador();
-    await newsImages()
     if (response.status == 200) {
       const dataJs = await response.json();
 
-      navi(`/depa/${dataJs._id}`, {
+      navi(`/react-depas/depa/${dataJs._id}`, {
         state: { depaData: dataJs },
       });
     }
@@ -228,12 +215,12 @@ function CreateArti({ mode = "crear", ideForEdit }) {
       setReFeature([]);
     }
   }, [mode]);
-
+  
   return (
     <div className="CreateArti">
       <div className="box_create">
         <form
-          onSubmit={mode == "crear" ? createArticulo : editArticulo}
+          onSubmit={mode == "edit" ? editArticulo : createArticulo}
           className="create_form"
         >
           <div className="create_item">
@@ -285,7 +272,7 @@ function CreateArti({ mode = "crear", ideForEdit }) {
             <label htmlFor="">Ubicacion</label>
             <select
               id=""
-              value={"Chimbas"}
+              value={reLocation}
               onChange={(e) => setReLocation(e.target.value)}
             >
               <option value="Chimbas">Chimbas</option>

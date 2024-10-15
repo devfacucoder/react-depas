@@ -4,7 +4,7 @@ function AlerRole({ show=false }) {
     const navi = useNavigate()
   if (show) {
     setTimeout(()=>{
-        navi("/auth/login")
+        navi("/react-depas/auth/login")
     },2000)
     return (
       <div className="AlertModal">

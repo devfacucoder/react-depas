@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const apiUrl = import.meta.env.VITE_URL_API;
 import AlertModal from "../components/AlertModal";
 import AlerRole from "../components/AlertRole";
-
+import CardAdmPanel from "../components/CardAdmPanel";
 function Panel() {
   const [dateUsers, setDateUsers] = useState([]);
   const [showAlerModal, setShowAlerModal] = useState(false);
@@ -12,18 +12,21 @@ function Panel() {
   const [permitido, setPermitido] = useState(false);
 
   const eliminarUsuario = async () => {
-    const response = await fetch(apiUrl + `/api/panel/user/${idForDeleteUser}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("tk")}`,
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      apiUrl + `/api/panel/user/${idForDeleteUser}`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("tk")}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     if (response.status === 200) {
       setPermitido(true);
       await response.json(); // Asegúrate de esperar la respuesta JSON
-      setShowAlerModal(false)
+      setShowAlerModal(false);
       setDateUsers((prevUsers) =>
         prevUsers.filter((user) => user._id !== idForDeleteUser)
       );
@@ -35,7 +38,7 @@ function Panel() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const res = await fetch(apiUrl + `/api/users/`, {
+      const res = await fetch(apiUrl + `/api/panel/users `, {
         headers: {
           Authorization: `Bearer ${sessionStorage.getItem("tk")}`,
           "Content-Type": "application/json",
@@ -51,7 +54,7 @@ function Panel() {
       }
     };
 
-    fetchUsers().catch(err => console.log(err)); // Manejo de errores
+    fetchUsers().catch((err) => console.log(err)); // Manejo de errores
   }, []);
 
   return (
@@ -67,21 +70,13 @@ function Panel() {
         <ul>
           {permitido ? (
             dateUsers.map((e, index) => (
-              <li key={index}>
-                <p>{e._id}</p>
-                <p>{e.firtsName + " " + e.lastName}</p>
-                <p>{e.email}</p>
-                <div>
-                  <button
-                    onClick={() => {
-                      setShowAlerModal(true);
-                      setIdForDeleteUser(e._id);
-                    }}
-                  >
-                    Eliminar
-                  </button>
-                </div>
-              </li>
+              <CardAdmPanel pDepas={e.depas} key={index}
+              pId={e._id}
+              pApellido={e.lastName}
+              pNombre={e.firtsName}
+              pEmail={e.email}
+              pRolName={e.rol.name}
+              />
             ))
           ) : (
             <p>Loading</p>

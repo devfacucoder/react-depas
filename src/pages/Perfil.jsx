@@ -17,7 +17,7 @@ function Perfil() {
 
   useEffect(() => {
     if (!sessionStorage.getItem("tk")) {
-      navi("/auth/login");
+      navi("/react-depas/auth/login");
     }
     fetch(apiUrl + "/api/users/perfil", {
       headers: {
@@ -26,8 +26,9 @@ function Perfil() {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         if (data.message == "Invalid or expired token") {
-          navi("/auth/login");
+          navi("/react-depas/auth/login");
         } else {
           setDataUser(data); // Guardar los datos del usuario
           setLoading(false); // Cambiar el estado de carga
@@ -81,7 +82,7 @@ function Perfil() {
             dataDepa.map((e, index) => (
               <li key={index}>
                 <Link
-                  to={`/depa/${e._id}`}
+                  to={`/react-depas/depa/${e._id}`}
                   state={{
                     depaData: e,
                     userName: {

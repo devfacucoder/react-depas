@@ -32,7 +32,7 @@ function Depa() {
     const result = await deleteDepa(id);
 
     if (result.status == 200) {
-      navi("/perfil");
+      navi("/react-depas/perfil");
     } else {
       console.error("Error al eliminar el departamento:", result);
     }
@@ -82,7 +82,7 @@ function Depa() {
               stateDepa.imgs.length > 0 &&
               stateDepa.imgs[inImg]
                 ? stateDepa.imgs[inImg].url
-                : "https://i.pinimg.com/736x/28/78/5e/28785e0fb4653060408fa2eda6309aed.jpg"
+                : "https://previews.123rf.com/images/boxerx/boxerx1611/boxerx161100006/68882648-descargar-signo-en-fondo-blanco-cargar-icono-barra-de-carga-de-datos-ilustraci%C3%B3n-de-stock-vector.jpg"
             }
             alt="Imagen del departamento"
           />
@@ -112,7 +112,7 @@ function Depa() {
               Borrar
             </button>
               <button onClick={()=>{
-                navi(`/editar/${id}`,{
+                navi(`/react-depas/editar/${id}`,{
                   state:{
                     dateForEdit:stateDepa
                   }

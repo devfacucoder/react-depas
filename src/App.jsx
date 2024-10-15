@@ -7,6 +7,9 @@ import Depa from "./pages/Depa";
 import MenuNav from "./components/MenuNav";
 import Inicio from "./pages/Inicio";
 import Panel from "./pages/Panel";
+import VerifyEmail from "./pages/VerifyEmail";
+
+
 import { Route, Routes } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 
@@ -30,21 +33,25 @@ function App() {
       </header>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Inicio />} />
+        <Route path="/react-depas" element={<Inicio />} />
 
-        <Route path="/panel" element={<Panel />} />
-        <Route path="/auth" element={<Auth />} />
-        <Route path="/auth/login" element={<Auth />} />
-        <Route path="/auth/register" element={<Auth />} />
-        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/react-depas/panel" element={<Panel />} />
+        <Route path="/react-depas/auth" element={<Auth />} />
+        <Route path="/react-depas/auth/login" element={<Auth />} />
+        <Route path="/react-depas/auth/register" element={<Auth />} />
+        <Route path="/react-depas/verify" element={<VerifyEmail/>}/>
+        <Route path="/react-depas/perfil" element={<Perfil />} />
 
-        <Route path="/creardepa" element={<CreateArti mode="crear" />} />
-        <Route path="/depa/:id" element={<Depa />} />
-        <Route path="/editar/:id" element={<CreateArti mode="edit" />} />
+        <Route path="/react-depas/creardepa" element={<CreateArti mode="crear" />} />
+        <Route path="/react-depas/depa/:id" element={<Depa />} />
+        <Route path="/react-depas/editar/:id" element={<CreateArti mode="edit" />} />
+        
       </Routes>
      
     </div>
   );
 }
+/* 
 
+*/
 export default App;
